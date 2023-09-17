@@ -25,8 +25,8 @@ lib_summary <- function(sizes = FALSE) {
   if(sizes == TRUE) {
     pkg_df$lib_size <-  sapply(
       pkg_df$Library,
-      function(x) {
-        sum(fs::file_size(fs::dir_ls(x, recurse = TRUE)))
+      function(x) { #fs is available for us to call; not for others to use
+        sum(fs::file_size(fs::dir_ls(x, recurse = TRUE))) #below we use two commands from fs package
       }
     )
   }
